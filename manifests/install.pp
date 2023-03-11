@@ -117,6 +117,7 @@ class telegraf::install {
     }
     'RedHat': {
       if $telegraf::manage_repo {
+        notify { "telegraf::manage_repo: ${telegraf::manage_repo}": }
         if $facts['os']['name'] == 'Amazon' {
           $_baseurl = "https://repos.influxdata.com/rhel/6/\$basearch/${telegraf::repo_type}"
         } else {
